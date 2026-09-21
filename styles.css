@@ -1,5 +1,4 @@
-<style>
-    :root {
+   :root {
       --ink: #081622;
       --ink-2: #102434;
       --paper: #f3f0ea;
@@ -449,5 +448,4 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
-  </style>
 
