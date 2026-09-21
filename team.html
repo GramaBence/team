@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#081622" />
+  <meta name="description" content="Tanórai Arsenal-kódex: jelenlegi férfi keret, klubtörténet, Invincibles, aranycsapat és edzői örökség." />
+  <title>Arsenal Kódex — A jelen kerete, a teljes történet</title>
+  <style>
+    :root {
+      --ink: #081622;
+      --ink-2: #102434;
+      --paper: #f3f0ea;
+      --paper-2: #ebe6dc;
+      --white: #fffdf8;
+      --red: #db001b;
+      --red-dark: #a7081b;
+      --red-soft: #f5d8d6;
+      --gold: #e1b768;
+      --blue: #12344b;
+      --muted: #6f767a;
+      --line: rgba(8, 22, 34, .16);
+      --shadow: 0 18px 55px rgba(8, 22, 34, .12);
+      --radius: 18px;
+      --display: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      --body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--body);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: radial-gradient(rgba(8,22,34,.16) .5px, transparent .5px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+      z-index: 10;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { background: var(--red); color: var(--white); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 clamp(18px, 4vw, 64px);
+      color: var(--white);
+      background: rgba(8, 22, 34, .96);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(16px);
+    }
+    .progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 3px;
+      width: 0;
+      background: var(--gold);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      min-width: max-content;
+    }
+    .crest {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--red);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      font: 800 17px/1 var(--display);
+      letter-spacing: -.08em;
+      transform: rotate(-9deg);
+    }
+    .brand-copy { line-height: 1; }
+    .brand-copy strong { display: block; font: 800 17px/1 var(--display); letter-spacing: .09em; }
+    .brand-copy span { display: block; margin-top: 5px; color: rgba(255,255,255,.6); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-left: auto;
+    }
+    .nav a {
+      color: rgba(255,255,255,.7);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .18s ease;
+    }
+    .nav a:hover, .nav a.active { color: var(--gold); }
+    .top-actions { display: flex; gap: 8px; }
+    .icon-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 37px;
+      height: 37px;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .icon-btn:hover { background: var(--red); transform: translateY(-2px); }
+    .menu-btn { display: none; }
+
+    .wrap { width: min(1240px, calc(100% - 36px)); margin: 0 auto; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font: 800 11px/1 var(--display);
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    .section { padding: clamp(76px, 9vw, 132px) 0; position: relative; }
+    .section-header { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+    .section-header h2 {
+      margin: 14px 0 0;
+      max-width: 740px;
+      font: 800 clamp(38px, 6vw, 80px)/.9 var(--display);
+      letter-spacing: -.065em;
+      text-transform: uppercase;
+    }
+    .section-header p { max-width: 340px; margin: 0; color: var(--muted); font-size: 14px; }
+    .section-number { color: var(--red); font: 800 14px/1 var(--display); letter-spacing: .15em; }
+
+    .hero {
+      min-height: min(780px, calc(100vh - 74px));
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr);
+      gap: 5vw;
+      align-items: end;
+      padding: clamp(60px, 9vw, 124px) clamp(18px, 7vw, 108px) 82px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 76% 16%, rgba(225,183,104,.2), transparent 0 23%),
+        linear-gradient(118deg, #081622 0%, #0e2a3d 58%, #12344b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -4% -30% 44%;
+      height: 80%;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      transform: rotate(-15deg);
+      box-shadow: 0 0 0 28px rgba(255,255,255,.035), 0 0 0 58px rgba(255,255,255,.03);
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero .eyebrow { color: var(--gold); }
+    .hero h1 {
+      max-width: 850px;
+      margin: 22px 0 25px;
+      font: 800 clamp(56px, 10vw, 152px)/.82 var(--display);
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+    .hero h1 em { color: var(--gold); font-family: var(--serif); font-weight: 400; letter-spacing: -.08em; }
+    .hero-lede { max-width: 560px; margin: 0; color: rgba(255,255,255,.7); font-size: clamp(15px, 1.5vw, 19px); }
+    .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 45px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--white); background: var(--red); }
+    .btn-primary:hover { background: #ee1a33; }
+    .btn-ghost { color: var(--white); border-color: rgba(255,255,255,.3); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-board {
+      position: relative;
+      z-index: 1;
+      padding: 25px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 22px 70px rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+    }
+    .board-kicker { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.16); color: var(--gold); font: 800 11px/1 var(--display); letter-spacing: .13em; text-transform: uppercase; }
+    .board-title { margin: 33px 0 28px; font: 400 clamp(25px, 3.1vw, 41px)/.95 var(--serif); }
+    .board-note { margin: 0 0 26px; color: rgba(255,255,255,.6); font-size: 13px; }
+    .stat-line { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.16); }
+    .stat-line strong { display: block; color: var(--gold); font: 800 clamp(25px, 3vw, 40px)/1 var(--display); letter-spacing: -.05em; }
+    .stat-line span { display: block; margin-top: 5px; color: rgba(255,255,255,.5); font-size: 10px; line-height: 1.2; text-transform: uppercase; }
+
+    .signal-bar { padding: 16px 0; color: var(--white); background: var(--red); }
+    .signal-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .signal-inner p { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .signal-inner span { color: rgba(255,255,255,.64); font-size: 11px; }
+
+    .squad-section { background: var(--paper); }
+    .squad-tools { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 30px; padding: 13px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; }
+    .filter-list { display: flex; gap: 5px; flex-wrap: wrap; }
+    .filter-btn { padding: 9px 13px; color: var(--muted); background: transparent; border: 0; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .filter-btn:hover, .filter-btn[aria-pressed="true"] { color: var(--white); background: var(--ink); }
+    .search-wrap { display: flex; align-items: center; gap: 8px; padding: 0 10px; color: var(--muted); }
+    .search-wrap svg { width: 17px; }
+    .search-wrap input { width: 160px; padding: 8px 0; color: var(--ink); background: transparent; border: 0; outline: 0; font-size: 13px; }
+    .search-wrap input::placeholder { color: #9ba0a2; }
+    .squad-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .player-card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: var(--radius);
+      isolation: isolate;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .player-card::before { content: ""; position: absolute; z-index: -1; inset: 30% -25% -25% 28%; background: linear-gradient(130deg, transparent, rgba(219,0,27,.86)); transform: rotate(-14deg); }
+    .player-card::after { content: ""; position: absolute; z-index: -1; width: 150px; height: 150px; right: -42px; top: -48px; border: 1px solid rgba(225,183,104,.25); border-radius: 50%; box-shadow: 0 0 0 12px rgba(225,183,104,.05); }
+    .player-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .player-card.hidden { display: none; }
+    .player-top { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+    .player-initials { color: rgba(255,255,255,.16); font: 800 57px/.75 var(--display); letter-spacing: -.09em; }
+    .player-badge { color: var(--gold); font: 850 11px/1 var(--display); letter-spacing: .15em; text-transform: uppercase; }
+    .player-meta { position: relative; margin-top: 52px; }
+    .player-meta .position { color: rgba(255,255,255,.65); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .player-meta h3 { margin: 6px 0 5px; font: 800 clamp(21px, 2vw, 28px)/.93 var(--display); letter-spacing: -.045em; }
+    .player-meta p { margin: 0; color: rgba(255,255,255,.64); font-size: 11px; }
+    .player-action { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 22px; padding-top: 13px; color: var(--gold); background: transparent; border: 0; border-top: 1px solid rgba(255,255,255,.2); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-align: left; text-transform: uppercase; }
+    .player-action span { font-size: 18px; line-height: .8; }
+    .no-results { display: none; padding: 30px; color: var(--muted); background: var(--white); border: 1px dashed var(--line); border-radius: var(--radius); }
+    .no-results.visible { display: block; }
+    .data-note { display: flex; align-items: center; gap: 9px; margin-top: 17px; color: var(--muted); font-size: 11px; }
+    .data-note i { width: 7px; height: 7px; display: inline-block; background: var(--red); border-radius: 50%; }
+
+    .history-section { color: var(--white); background: var(--ink); }
+    .history-section .eyebrow { color: var(--gold); }
+    .history-section .section-header p { color: rgba(255,255,255,.56); }
+    .history-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: 7vw; align-items: end; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,.16); }
+    .history-intro blockquote { margin: 0; font: 400 clamp(26px, 4vw, 56px)/.98 var(--serif); letter-spacing: -.04em; }
+    .history-intro blockquote::before { content: "“"; color: var(--red); }
+    .history-intro .note { margin: 0; color: rgba(255,255,255,.62); font-size: 14px; }
+    .timeline { position: relative; margin-top: 52px; }
+    .timeline::before { content: ""; position: absolute; left: 24px; top: 6px; bottom: 6px; width: 1px; background: rgba(255,255,255,.23); }
+    .timeline-item { display: grid; grid-template-columns: 78px 1fr; gap: 24px; position: relative; padding-bottom: 38px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-year { position: relative; z-index: 1; display: grid; place-items: center; width: 49px; height: 49px; color: var(--ink); background: var(--gold); border-radius: 50%; font: 850 11px/1 var(--display); }
+    .timeline-content { max-width: 780px; padding-top: 5px; }
+    .timeline-content h3 { margin: 0 0 8px; font: 800 clamp(22px, 3vw, 33px)/.95 var(--display); letter-spacing: -.04em; }
+    .timeline-content p { max-width: 650px; margin: 0; color: rgba(255,255,255,.62); font-size: 14px; }
+    .timeline-content strong { color: var(--gold); }
+
+    .legacy-section { background: var(--paper-2); }
+    .legacy-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 5vw; align-items: start; }
+    .legacy-card { padding: 30px; color: var(--white); background: var(--red); border-radius: var(--radius); box-shadow: 18px 18px 0 var(--gold); }
+    .legacy-card .stamp { display: inline-flex; padding: 7px 10px; color: var(--red); background: var(--gold); font: 850 10px/1 var(--display); letter-spacing: .15em; text-transform: uppercase; }
+    .legacy-card h3 { margin: 28px 0 14px; font: 800 clamp(35px, 5vw, 66px)/.86 var(--display); letter-spacing: -.08em; text-transform: uppercase; }
+    .legacy-card p { margin: 0; color: rgba(255,255,255,.78); font-size: 14px; }
+    .legacy-card .big-stat { display: flex; align-items: baseline; gap: 10px; margin-top: 38px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.3); }
+    .big-stat strong { font: 850 62px/.8 var(--display); letter-spacing: -.08em; }
+    .big-stat span { max-width: 120px; color: rgba(255,255,255,.72); font-size: 11px; line-height: 1.2; text-transform: uppercase; }
+    .team-sheet { background: var(--white); border-top: 5px solid var(--ink); }
+    .team-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 17px 20px; border-bottom: 1px solid var(--line); }
+    .team-sheet-head h3 { margin: 0; font: 800 21px/1 var(--display); letter-spacing: -.04em; text-transform: uppercase; }
+    .team-sheet-head span { color: var(--red); font: 850 11px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; }
+    .team-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .team-row { display: flex; align-items: baseline; gap: 13px; padding: 13px 20px; border-bottom: 1px solid var(--line); }
+    .team-row:nth-child(odd) { border-right: 1px solid var(--line); }
+    .team-row b { width: 23px; color: var(--red); font: 850 12px/1 var(--display); }
+    .team-row strong { font: 800 15px/1 var(--display); }
+    .team-row small { margin-left: auto; color: var(--muted); font-size: 10px; text-transform: uppercase; }
+    .legacy-footnote { margin-top: 16px; color: var(--muted); font-size: 11px; }
+
+    .golden-section { color: var(--white); background: #bd0a20; overflow: hidden; }
+    .golden-section::before { content: "XI"; position: absolute; right: 2vw; top: 22px; color: rgba(255,255,255,.06); font: 900 32vw/.8 var(--display); letter-spacing: -.12em; pointer-events: none; }
+    .golden-section .section-header { position: relative; z-index: 1; }
+    .golden-section .eyebrow { color: var(--gold); }
+    .golden-section .section-header p { color: rgba(255,255,255,.68); }
+    .golden-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .75fr; gap: 5vw; align-items: center; }
+    .pitch { position: relative; min-height: 610px; padding: 36px 26px; background: #22734d; border: 2px solid rgba(255,255,255,.75); border-radius: 15px; box-shadow: inset 0 0 0 11px rgba(255,255,255,.09), 0 20px 50px rgba(70,0,10,.26); overflow: hidden; }
+    .pitch::before { content: ""; position: absolute; inset: 50% 0 auto; height: 2px; background: rgba(255,255,255,.55); }
+    .pitch::after { content: ""; position: absolute; width: 190px; height: 190px; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 2px solid rgba(255,255,255,.55); border-radius: 50%; }
+    .pitch-line { position: absolute; left: 50%; transform: translateX(-50%); width: 55%; height: 72px; border: 2px solid rgba(255,255,255,.55); }
+    .pitch-line.top { top: -2px; border-top: 0; }
+    .pitch-line.bottom { bottom: -2px; border-bottom: 0; }
+    .formation { position: relative; z-index: 1; min-height: 535px; display: flex; flex-direction: column; justify-content: space-between; }
+    .formation-row { display: flex; justify-content: space-around; align-items: center; gap: 10px; }
+    .formation-player { width: min(125px, 22%); min-width: 86px; display: grid; place-items: center; text-align: center; }
+    .player-token { width: 47px; height: 47px; display: grid; place-items: center; color: var(--ink); background: var(--gold); border: 3px solid rgba(255,255,255,.8); border-radius: 50%; box-shadow: 0 4px 0 rgba(0,0,0,.18); font: 850 12px/1 var(--display); }
+    .formation-player strong { display: block; margin-top: 8px; font: 800 13px/1 var(--display); }
+    .formation-player small { display: block; margin-top: 4px; color: rgba(255,255,255,.65); font-size: 9px; text-transform: uppercase; }
+    .golden-copy h3 { margin: 0 0 20px; font: 800 clamp(34px, 5vw, 72px)/.86 var(--display); letter-spacing: -.08em; text-transform: uppercase; }
+    .golden-copy p { color: rgba(255,255,255,.72); font-size: 15px; }
+    .legend { display: grid; gap: 10px; margin-top: 28px; }
+    .legend-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.72); font-size: 11px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+    .legend-dot.current { background: #fff; }
+    .golden-callout { margin-top: 32px; padding: 17px; color: var(--ink); background: var(--gold); font-size: 12px; font-weight: 700; }
+
+    .coaches-section { background: var(--paper); }
+    .coach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .coach-card { display: flex; flex-direction: column; min-height: 420px; padding: 22px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); transition: transform .2s ease, border-color .2s ease; }
+    .coach-card:hover { transform: translateY(-4px); border-color: var(--red); }
+    .coach-card:nth-child(1) { background: var(--ink); color: var(--white); }
+    .coach-card:nth-child(1) .coach-meta, .coach-card:nth-child(1) .coach-team, .coach-card:nth-child(1) p { color: rgba(255,255,255,.62); }
+    .coach-card:nth-child(4) { border-top: 5px solid var(--red); }
+    .coach-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+    .coach-initial { width: 57px; height: 57px; display: grid; place-items: center; color: var(--red); background: var(--red-soft); border-radius: 50%; font: 850 21px/1 var(--display); }
+    .coach-era { padding-top: 6px; color: var(--red); font: 850 10px/1 var(--display); letter-spacing: .13em; text-align: right; text-transform: uppercase; }
+    .coach-card h3 { margin: 32px 0 9px; font: 800 29px/.9 var(--display); letter-spacing: -.06em; text-transform: uppercase; }
+    .coach-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .coach-achievement { margin-top: auto; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .coach-achievement strong { display: block; color: var(--red); font: 850 13px/1.15 var(--display); letter-spacing: .06em; text-transform: uppercase; }
+    .coach-achievement span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+    .coach-card:nth-child(1) .coach-achievement span { color: rgba(255,255,255,.62); }
+    .coach-team { margin-top: 15px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    .coach-team strong { color: inherit; font-weight: 850; text-transform: uppercase; }
+
+    .teacher-section { padding-top: 25px; background: var(--paper); }
+    .teacher-board { display: grid; grid-template-columns: .55fr 1.45fr; gap: 5vw; align-items: center; padding: clamp(30px, 5vw, 68px); color: var(--white); background: var(--ink); }
+    .teacher-board .eyebrow { color: var(--gold); }
+    .teacher-board h2 { margin: 16px 0 0; font: 800 clamp(33px, 5vw, 65px)/.88 var(--display); letter-spacing: -.08em; text-transform: uppercase; }
+    .teacher-board p { margin: 0; color: rgba(255,255,255,.68); font-size: 14px; }
+    .prompt-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 22px; margin-top: 25px; }
+    .prompt-list div { display: flex; gap: 10px; align-items: start; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.8); font-size: 12px; }
+    .prompt-list b { color: var(--gold); font: 850 11px/1 var(--display); }
+
+    .sources { padding: 48px 0 78px; background: var(--paper); border-top: 1px solid var(--line); }
+    .sources h2 { margin: 0 0 15px; font: 800 24px/1 var(--display); letter-spacing: -.04em; text-transform: uppercase; }
+    .sources p { max-width: 700px; margin: 0 0 18px; color: var(--muted); font-size: 12px; }
+    .source-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .source-list a { padding: 9px 12px; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font-size: 11px; text-decoration: none; }
+    .source-list a:hover { color: var(--red); border-color: var(--red); }
+    footer { padding: 22px 0 30px; color: rgba(255,255,255,.56); background: var(--ink); font-size: 11px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner strong { color: var(--gold); font: 850 12px/1 var(--display); letter-spacing: .15em; }
+
+    .modal-backdrop { position: fixed; z-index: 40; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(8,22,34,.78); opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease; }
+    .modal-backdrop.open { opacity: 1; visibility: visible; }
+    .modal { width: min(560px, 100%); max-height: min(700px, 90vh); overflow: auto; padding: 28px; color: var(--white); background: var(--ink); border: 1px solid rgba(255,255,255,.18); border-top: 5px solid var(--red); box-shadow: 0 30px 100px rgba(0,0,0,.38); transform: translateY(12px); transition: transform .2s ease; }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+    .modal-top { display: flex; justify-content: space-between; gap: 18px; }
+    .modal-top small { color: var(--gold); font: 850 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; }
+    .close-modal { width: 32px; height: 32px; display: grid; place-items: center; color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; }
+    .close-modal:hover { background: var(--red); }
+    .modal h2 { margin: 35px 0 10px; font: 800 clamp(40px, 8vw, 66px)/.84 var(--display); letter-spacing: -.08em; text-transform: uppercase; }
+    .modal .modal-role { color: var(--gold); font-size: 13px; font-weight: 700; }
+    .modal .modal-copy { margin: 24px 0; color: rgba(255,255,255,.72); font-size: 14px; }
+    .modal-facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,.18); }
+    .modal-fact { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .modal-fact:nth-child(odd) { margin-right: 18px; }
+    .modal-fact span { display: block; color: rgba(255,255,255,.45); font-size: 10px; text-transform: uppercase; }
+    .modal-fact strong { display: block; margin-top: 4px; color: var(--gold); font: 800 17px/1 var(--display); }
+
+    @media (max-width: 1030px) {
+      .nav { gap: 13px; }
+      .nav a { font-size: 10px; }
+      .squad-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .coach-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .topbar { height: 66px; padding: 0 18px; }
+      .nav { position: absolute; top: 65px; left: 0; right: 0; display: none; padding: 17px 18px 21px; background: var(--ink); border-top: 1px solid rgba(255,255,255,.12); box-shadow: 0 18px 30px rgba(0,0,0,.2); }
+      .nav.open { display: grid; gap: 17px; }
+      .menu-btn { display: inline-grid; }
+      .top-actions { margin-left: auto; }
+      .hero { min-height: auto; grid-template-columns: 1fr; padding: 76px 18px 64px; }
+      .hero h1 { max-width: 630px; font-size: clamp(57px, 16vw, 101px); }
+      .hero-board { max-width: 520px; }
+      .signal-inner { align-items: start; flex-direction: column; gap: 5px; }
+      .section-header { display: block; }
+      .section-header p { margin-top: 18px; }
+      .squad-tools { align-items: stretch; border-radius: var(--radius); }
+      .filter-list { gap: 2px; }
+      .search-wrap { padding: 6px 10px 0; border-top: 1px solid var(--line); }
+      .search-wrap input { width: 100%; }
+      .squad-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .player-card { min-height: 225px; padding: 15px; }
+      .player-meta { margin-top: 34px; }
+      .player-meta h3 { font-size: 22px; }
+      .history-intro, .legacy-layout, .golden-layout, .teacher-board { grid-template-columns: 1fr; gap: 32px; }
+      .history-intro { padding-bottom: 42px; }
+      .pitch { min-height: 560px; }
+      .formation { min-height: 490px; }
+      .coach-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .coach-card { min-height: 400px; padding: 16px; }
+      .coach-card h3 { font-size: 24px; }
+      .prompt-list { grid-template-columns: 1fr; }
+      .footer-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 470px) {
+      .brand-copy strong { font-size: 14px; }
+      .brand-copy span { font-size: 8px; }
+      .hero h1 { font-size: 57px; }
+      .squad-grid { grid-template-columns: 1fr 1fr; }
+      .player-card { min-height: 205px; }
+      .player-badge { font-size: 9px; }
+      .player-initials { font-size: 45px; }
+      .player-meta h3 { font-size: 20px; }
+      .player-meta p { font-size: 10px; }
+      .coach-grid { grid-template-columns: 1fr; }
+      .coach-card { min-height: 330px; }
+      .team-list { grid-template-columns: 1fr; }
+      .team-row:nth-child(odd) { border-right: 0; }
+      .pitch { padding: 30px 10px; }
+      .formation-player { min-width: 70px; }
+      .formation-player strong { font-size: 11px; }
+      .formation-player small { font-size: 8px; }
+    }
+    @media print {
+      body::before, .topbar, .hero-cta-row, .squad-tools, .player-action, .modal-backdrop, .signal-bar { display: none !important; }
+      .hero { min-height: auto; padding: 48px 0; color: #000; background: #fff; }
+      .hero h1 { font-size: 75px; }
+      .hero-board, .teacher-board, .legacy-card, .golden-section { color: #000; background: #fff; box-shadow: none; border: 1px solid #ccc; }
+      .section { padding: 45px 0; break-inside: avoid; }
+      .player-card, .coach-card { break-inside: avoid; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Arsenal Kódex kezdőlap">
+      <span class="crest" aria-hidden="true">A</span>
+      <span class="brand-copy"><strong>ARSENAL KÓDEX</strong><span>Tanórai sporttörténet</span></span>
+    </a>
+    <nav class="nav" id="siteNav" aria-label="Fő navigáció">
+      <a href="#csapat">Jelen</a>
+      <a href="#tortenet">Történet</a>
+      <a href="#orokseg">Örökség</a>
+      <a href="#aranycsapat">Arany XI</a>
+      <a href="#edzok">Edzők</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
+      <button class="icon-btn" id="printPage" aria-label="Oldal nyomtatása" title="Nyomtatás">⌁</button>
+    </div>
+    <div class="progress" id="progressBar"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="eyebrow">Iskolai Arsenal-kalauz · 2026/27</div>
+        <h1>A jelen<br /><em>kerete.</em><br />A teljes<br />történet.</h1>
+        <p class="hero-lede">Egy tanórai kódex az Arsenalról: kik viszik tovább a klub vörös-fehér történetét, kik építették fel az örökségét, és mitől lesz egy csapat emlékezetes?</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-primary" href="#csapat">A keret felfedezése <span>↘</span></a>
+          <a class="btn btn-ghost" href="#aranycsapat">Arany XI <span>✦</span></a>
+        </div>
+      </div>
+      <aside class="hero-board" aria-label="Arsenal gyors tények">
+        <div class="board-kicker"><span>Matchday board 01</span><span>North London</span></div>
+        <h2 class="board-title">A futball nem csak 90 perc. Egy klub emlékezete is pályára lép.</h2>
+        <p class="board-note">A kódexet úgy rendeztem, hogy egy tanórán végig lehessen vezetni: jelenlegi játékosok → történelmi fordulópontok → örökölt játékfelfogás.</p>
+        <div class="stat-line">
+          <div><strong>1886</strong><span>alapítás</span></div>
+          <div><strong>13</strong><span>bajnoki cím</span></div>
+          <div><strong>14</strong><span>FA-kupa</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="signal-bar"><div class="wrap signal-inner"><p>FRISS KERET · A hivatalos férfi játékosoldalak alapján</p><span>Snapshot: 2026. szeptember 16.</span></div></div>
+
+    <section class="section squad-section" id="csapat">
+      <div class="wrap">
+        <div class="section-header">
+          <div><div class="eyebrow"><span class="section-number">01</span> A jelen</div><h2>Az első csapat<br /><span style="font-family:var(--serif);font-weight:400;text-transform:none">most</span></h2></div>
+          <p>26 név, négy szerepkör, egy közös kérdés: hogyan áll össze az Arsenal mai identitása?</p>
+        </div>
+
+        <div class="squad-tools" aria-label="Keret szűrése">
+          <div class="filter-list" role="group" aria-label="Posztszűrők">
+            <button class="filter-btn" data-filter="all" aria-pressed="true">Összes <span>(26)</span></button>
+            <button class="filter-btn" data-filter="kapus">Kapusok</button>
+            <button class="filter-btn" data-filter="vedo">Védők</button>
+            <button class="filter-btn" data-filter="kozeppalya">Középpályások</button>
+            <button class="filter-btn" data-filter="tamado">Támadók</button>
+          </div>
+          <label class="search-wrap" aria-label="Játékos keresése">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+            <input id="playerSearch" type="search" placeholder="Játékos keresése…" />
+          </label>
+        </div>
+
+        <div class="squad-grid" id="squadGrid"></div>
+        <div class="no-results" id="noResults">Nincs találat ebben a nézetben. Próbálj másik posztot vagy rövidebb keresést.</div>
+        <p class="data-note"><i></i> A keretnév-lista a klub hivatalos férfi játékosoldalainak 2026. szeptember 16-i sitemapjéből készült; a kártyák tanórai, rövidített szerepleírásokat adnak.</p>
+      </div>
+    </section>
+
+    <section class="section history-section" id="tortenet">
+      <div class="wrap">
+        <div class="section-header">
+          <div><div class="eyebrow"><span class="section-number">02</span> A háttér</div><h2>Ha érted a múltat,<br /><span style="font-family:var(--serif);font-weight:400;text-transform:none">érted a mezt is</span></h2></div>
+          <p>Az Arsenal története nem egyenes vonal: műhelyből lett londoni óriás, majd újra és újra átírta, mit jelent vezetni.</p>
+        </div>
+        <div class="history-intro">
+          <blockquote>Vörös-fehérben a hagyomány nem díszlet. Elvárás.</blockquote>
+          <p class="note">A klubot 1886-ban alapították Woolwich Arsenal néven. Az észak-londoni identitás később, a Highburybe költözéssel vált igazán sajátossá. A nagy korszakokat mindig egy-egy új játékfelfogás tette felismerhetővé.</p>
+        </div>
+        <div class="timeline" aria-label="Arsenal történelmi idővonal">
+          <article class="timeline-item"><div class="timeline-year">1886</div><div class="timeline-content"><h3>Muníciógyárból közösség</h3><p>Woolwichben dolgozó munkások alapították a klubot. A név és a címer is a kezdetek ipari környezetére emlékeztet.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">1913</div><div class="timeline-content"><h3>Észak-London felé</h3><p>A klub elhagyta Woolwichot, és Highburyben talált otthonra. Ettől kezdve az Arsenal londoni története új városi közönséggel bővült.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">1930</div><div class="timeline-content"><h3>Chapman rendszere</h3><p>Herbert Chapman modernizálta a klub működését és taktikáját. A korszak első nagy sikere az <strong>1930-as FA-kupa-győzelem</strong> volt.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">1971</div><div class="timeline-content"><h3>Az első 20. századi duplázás</h3><p>Az Arsenal a bajnokságot és az FA-kupát is megnyerte. A klub történetében ez lett az első 20. századi „double”.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">1989</div><div class="timeline-content"><h3>Az anfieldi pillanat</h3><p>George Graham csapata az utolsó fordulóban, az Anfielden szerezte meg a bajnoki címet. A döntő gól emlékezete máig a klub egyik legerősebb filmes jelenete.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">2004</div><div class="timeline-content"><h3>Az Invincibles</h3><p>Arsène Wenger csapata veretlenül teljesítette a Premier League-szezont: 38 meccs, vereség nélkül. Ez a teljesítmény adta a korszak becenevét.</p></div></article>
+          <article class="timeline-item"><div class="timeline-year">2020</div><div class="timeline-content"><h3>Újra trófea Artetával</h3><p>Mikel Arteta első vezetőedzői idényében az Arsenal megnyerte az FA-kupát, új fejezetet nyitva a klub modern újjáépítésében.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section legacy-section" id="orokseg">
+      <div class="wrap">
+        <div class="section-header">
+          <div><div class="eyebrow"><span class="section-number">03</span> A régi csapat</div><h2>Az Invincibles<br /><span style="font-family:var(--serif);font-weight:400;text-transform:none">nem csak emlék</span></h2></div>
+          <p>2003/04-ben az Arsenal veretlen bajnoki idényt zárt. Az összeállítás egyszerre volt technikás, kemény és meglepően sokoldalú.</p>
+        </div>
+        <div class="legacy-layout">
+          <article class="legacy-card">
+            <span class="stamp">2003 / 04 · Premier League</span>
+            <h3>38<br />meccs.<br />0 vereség.</h3>
+            <p>A csapat nem egyetlen sztárból állt: a védelem stabilitása, a középpálya ritmusváltásai és a támadók kreativitása ugyanahhoz a bátor játékhoz adott külön hangot.</p>
+            <div class="big-stat"><strong>90</strong><span>megszerzett pont a veretlen bajnoki szezonban</span></div>
+          </article>
+          <div>
+            <div class="team-sheet">
+              <div class="team-sheet-head"><h3>Az emlékezetes csapatlap</h3><span>4–4–2</span></div>
+              <div class="team-list">
+                <div class="team-row"><b>01</b><strong>Jens Lehmann</strong><small>kapus</small></div>
+                <div class="team-row"><b>02</b><strong>Lauren</strong><small>jobb hátvéd</small></div>
+                <div class="team-row"><b>03</b><strong>Sol Campbell</strong><small>középhátvéd</small></div>
+                <div class="team-row"><b>04</b><strong>Kolo Touré</strong><small>középhátvéd</small></div>
+                <div class="team-row"><b>05</b><strong>Ashley Cole</strong><small>bal hátvéd</small></div>
+                <div class="team-row"><b>06</b><strong>Patrick Vieira</strong><small>középpályás</small></div>
+                <div class="team-row"><b>07</b><strong>Gilberto Silva</strong><small>középpályás</small></div>
+                <div class="team-row"><b>08</b><strong>Freddie Ljungberg</strong><small>szélső</small></div>
+                <div class="team-row"><b>09</b><strong>Robert Pires</strong><small>szélső</small></div>
+                <div class="team-row"><b>10</b><strong>Dennis Bergkamp</strong><small>támadó</small></div>
+                <div class="team-row"><b>11</b><strong>Thierry Henry</strong><small>csatár</small></div>
+                <div class="team-row"><b>12</b><strong>Arsène Wenger</strong><small>edző</small></div>
+              </div>
+            </div>
+            <p class="legacy-footnote">A fenti csapatlap a korszak ikonikus kezdőmagját mutatja; a szezon erejét a keret mélysége és a cserék hozzájárulása is adta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section golden-section" id="aranycsapat">
+      <div class="wrap">
+        <div class="section-header">
+          <div><div class="eyebrow"><span class="section-number">04</span> Vitaindító</div><h2>Arany XI</h2></div>
+          <p>Egy játékos soha nem „csak” a saját korszakát képviseli. Ez a 4–3–3-as összeállítás a régi nagyok és a jelenlegi keret találkozása.</p>
+        </div>
+        <div class="golden-layout">
+          <div class="pitch" aria-label="Arsenal Arany XI pályaábra">
+            <div class="pitch-line top"></div><div class="pitch-line bottom"></div>
+            <div class="formation">
+              <div class="formation-row"><div class="formation-player"><span class="player-token">9</span><strong>Thierry Henry</strong><small>legenda · csatár</small></div></div>
+              <div class="formation-row"><div class="formation-player"><span class="player-token">7</span><strong>Robert Pires</strong><small>legenda · bal oldal</small></div><div class="formation-player"><span class="player-token">10</span><strong>Dennis Bergkamp</strong><small>legenda · 10-es</small></div><div class="formation-player"><span class="player-token">7</span><strong>Bukayo Saka</strong><small>jelen · jobb oldal</small></div></div>
+              <div class="formation-row"><div class="formation-player"><span class="player-token">4</span><strong>Patrick Vieira</strong><small>legenda · kapitány</small></div><div class="formation-player"><span class="player-token">8</span><strong>Martin Ødegaard</strong><small>jelen · ritmus</small></div></div>
+              <div class="formation-row"><div class="formation-player"><span class="player-token">3</span><strong>Ashley Cole</strong><small>legenda · bal hátvéd</small></div><div class="formation-player"><span class="player-token">6</span><strong>Tony Adams</strong><small>legenda · védelem</small></div><div class="formation-player"><span class="player-token">2</span><strong>William Saliba</strong><small>jelen · középhátvéd</small></div><div class="formation-player"><span class="player-token">12</span><strong>Lauren</strong><small>legenda · jobb hátvéd</small></div></div>
+              <div class="formation-row"><div class="formation-player"><span class="player-token">22</span><strong>David Raya</strong><small>jelen · kapus</small></div></div>
+            </div>
+          </div>
+          <div class="golden-copy">
+            <h3>Nem végső válasz.<br /><span style="font-family:var(--serif);font-weight:400;text-transform:none">Jó kérdés.</span></h3>
+            <p>Az „aranycsapat” összeállítása értelmezés kérdése. Ez a tizenegy a labdabirtoklást, a szélességet és a karaktert egyesíti — de a tanórán érdemes megkérdezni: kit cserélnél ki, és milyen játékfelfogás miatt?</p>
+            <div class="legend"><div class="legend-item"><span class="legend-dot"></span> Arsenal-legenda</div><div class="legend-item"><span class="legend-dot current"></span> Jelenlegi keret</div></div>
+            <div class="golden-callout">Tanári vitaindító: a csapat legnagyobb ereje a nevekben vagy a szerepek egymáshoz illeszkedésében van?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section coaches-section" id="edzok">
+      <div class="wrap">
+        <div class="section-header">
+          <div><div class="eyebrow"><span class="section-number">05</span> A kispad</div><h2>Edzők, akik<br /><span style="font-family:var(--serif);font-weight:400;text-transform:none">rendszert hagytak</span></h2></div>
+          <p>A trénerek más-más időszakban dolgoztak, mégis ugyanarra a kérdésre kerestek választ: milyen futball illik ehhez a klubhoz?</p>
+        </div>
+        <div class="coach-grid">
+          <article class="coach-card"><div class="coach-top"><div class="coach-initial">HC</div><div class="coach-era">1919—1934</div></div><h3>Herbert<br />Chapman</h3><p class="coach-meta">Az első nagy modernizáló: taktika, infrastruktúra, klubidentitás.</p><div class="coach-achievement"><strong>2 bajnoki cím · 1 FA-kupa</strong><span>Az 1930-as FA-kupa-győzelem és a két korai bajnoki cím tette történelmi alakmá.</span></div><div class="coach-team"><strong>Korábban:</strong> Northampton Town, Leeds City<br /><strong>Arsenal után:</strong> —</div></article>
+          <article class="coach-card"><div class="coach-top"><div class="coach-initial">GG</div><div class="coach-era">1986—1995</div></div><h3>George<br />Graham</h3><p class="coach-meta">A szervezettség és a védekezésből indított gyors játék mestere.</p><div class="coach-achievement"><strong>2 bajnoki cím · 5 nagy trófea</strong><span>1989 és 1991 bajnoka; FA-kupa, Ligakupa és Kupagyőztesek Európa-kupája.</span></div><div class="coach-team"><strong>Korábban:</strong> Millwall<br /><strong>Később:</strong> Leeds United, Tottenham</div></article>
+          <article class="coach-card"><div class="coach-top"><div class="coach-initial">AW</div><div class="coach-era">1996—2018</div></div><h3>Arsène<br />Wenger</h3><p class="coach-meta">A technika, a tudatosság és a futballkultúra hosszú forradalma.</p><div class="coach-achievement"><strong>3 bajnoki cím · 7 FA-kupa</strong><span>Az Invincibles edzője; az Arsenal történetének egyik legnagyobb korszakformálója.</span></div><div class="coach-team"><strong>Korábban:</strong> Nancy, Monaco, Nagoya Grampus<br /><strong>Arsenal után:</strong> FIFA</div></article>
+          <article class="coach-card"><div class="coach-top"><div class="coach-initial">MA</div><div class="coach-era">2019—</div></div><h3>Mikel<br />Arteta</h3><p class="coach-meta">Újjáépítés, intenzitás és a fiatal mag köré épített új Arsenal.</p><div class="coach-achievement"><strong>FA-kupa · 2 Community Shield</strong><span>Első szezonjában trófeát nyert; a jelenlegi keret játékstílusának és kultúrájának építője.</span></div><div class="coach-team"><strong>Korábban:</strong> Manchester City, edzőasszisztens<br /><strong>Arsenal:</strong> vezetőedző</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section teacher-section">
+      <div class="wrap">
+        <div class="teacher-board">
+          <div><div class="eyebrow">Tanári nézőpont</div><h2>Az oldal<br />kérdezni is tanít.</h2></div>
+          <div><p>Az Arsenal története akkor válik emlékezetessé, ha nem csak adatként olvassuk. A kódex minden fejezete egy kis beszélgetést indíthat az identitásról, a vezetésről és arról, hogyan épül fel egy csapat.</p><div class="prompt-list"><div><b>01</b><span>Melyik játékos a jelenlegi keret „kapcsolata” az Arsenal múltjával?</span></div><div><b>02</b><span>Miért lehetett veretlen egy csapat, amely nem minden meccsen játszott ugyanúgy?</span></div><div><b>03</b><span>Mit változtat meg egy új edző: a taktikát, a kultúrát vagy mindkettőt?</span></div><div><b>04</b><span>Hogyan választanál másik Arany XI-et, és milyen elv alapján?</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources"><div class="wrap"><h2>Források és frissítési pont</h2><p>A jelenlegi keret neveit és a klubtörténeti vázat elsődlegesen hivatalos Arsenal- és Premier League-oldalakból rendeztem át. A futballkeretek változhatnak, ezért a tanórai használat előtt érdemes a játékoslistát újra összevetni a klub hivatalos oldalával.</p><div class="source-list"><a href="https://www.arsenal.com/sitemaps/players/sitemap.xml" target="_blank" rel="noreferrer">Arsenal · játékos sitemap</a><a href="https://www.arsenal.com/history" target="_blank" rel="noreferrer">Arsenal · klubtörténet</a><a href="https://www.premierleague.com/news/1143881" target="_blank" rel="noreferrer">Premier League · Invincibles</a><a href="https://www.premierleague.com/clubs/1/Arsenal/overview" target="_blank" rel="noreferrer">Premier League · Arsenal</a></div></div></section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><strong>ARSENAL KÓDEX / 01</strong><span>Tanórai bemutatóoldal · Frissítve: 2026. szeptember 21.</span></div></footer>
+
+  <div class="modal-backdrop" id="playerModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal"><div class="modal-top"><small>Játékoskártya · Arsenal férfi keret</small><button class="close-modal" id="closeModal" aria-label="Bezárás">×</button></div><h2 id="modalName">Player</h2><div class="modal-role" id="modalRole"></div><p class="modal-copy" id="modalCopy"></p><div class="modal-facts"><div class="modal-fact"><span>Szerepkör</span><strong id="modalRoleFact"></strong></div><div class="modal-fact"><span>Nemzet</span><strong id="modalNation"></strong></div></div></div>
+  </div>
+
+  <script>
+    const squad = [
+      { name: 'David Raya', initials: 'DR', pos: 'kapus', label: 'Kapus', nation: 'Spanyolország', role: 'labdakihozatal', note: 'Magabiztosan kezdi a támadásokat, és a kapu előtt is gyors döntéseket hoz.' },
+      { name: 'Kepa Arrizabalaga', initials: 'KA', pos: 'kapus', label: 'Kapus', nation: 'Spanyolország', role: 'tapasztalat', note: 'Tapasztalt kapus, akinek játékában a helyezkedés és a passzjáték is fontos.' },
+      { name: 'Illan Meslier', initials: 'IM', pos: 'kapus', label: 'Kapus', nation: 'Franciaország', role: 'reflexek', note: 'Fiatal, nagy termetű kapus, aki a reflexeivel és a fejlődési ívével tűnik ki.' },
+      { name: 'Tommy Setford', initials: 'TS', pos: 'kapus', label: 'Kapus', nation: 'Anglia', role: 'utánpótlás', note: 'A klub hosszú távú kapusprojektjének része, aki a felnőtt keret közelében fejlődik.' },
+      { name: 'Ben White', initials: 'BW', pos: 'vedo', label: 'Védő', nation: 'Anglia', role: 'jobb oldal', note: 'Sokoldalú védő, aki a jobb oldalon és középhátvédként is értelmezhető.' },
+      { name: 'William Saliba', initials: 'WS', pos: 'vedo', label: 'Védő', nation: 'Franciaország', role: 'középhátvéd', note: 'A védelem sebességét, nyugalmát és labdakihozatalát egyszerre adja.' },
+      { name: 'Gabriel', initials: 'GA', pos: 'vedo', label: 'Védő', nation: 'Brazília', role: 'bal láb', note: 'Erős párharcos és veszélyes rögzített helyzeteknél; a védelem karaktere.' },
+      { name: 'Riccardo Calafiori', initials: 'RC', pos: 'vedo', label: 'Védő', nation: 'Olaszország', role: 'progresszív védő', note: 'A védősorból előrelépő, agresszíven támadó szellemű játékos.' },
+      { name: 'Jurrien Timber', initials: 'JT', pos: 'vedo', label: 'Védő', nation: 'Hollandia', role: 'variálható', note: 'Több védőpozícióban is használható, és szűk területen is magabiztos.' },
+      { name: 'Myles Lewis-Skelly', initials: 'MLS', pos: 'vedo', label: 'Védő', nation: 'Anglia', role: 'saját nevelés', note: 'Az akadémiáról érkező, technikás játékos, aki a védelemben és a középpályán is szerepelhet.' },
+      { name: 'Cristhian Mosquera', initials: 'CM', pos: 'vedo', label: 'Védő', nation: 'Spanyolország', role: 'középhátvéd', note: 'Fiatal középhátvéd, akinek a párharcok és az első passzok adják a karakterét.' },
+      { name: 'Piero Hincapié', initials: 'PH', pos: 'vedo', label: 'Védő', nation: 'Ecuador', role: 'bal oldal', note: 'Bal oldali védőként és középen is segíti a csapat dinamikus védekezését.' },
+      { name: 'Ezri Konsa', initials: 'EK', pos: 'vedo', label: 'Védő', nation: 'Anglia', role: 'megbízhatóság', note: 'Nyugodt, megbízható védő, aki a Premier League tapasztalatát hozza.' },
+      { name: 'Jaden Dixon', initials: 'JD', pos: 'vedo', label: 'Védő', nation: 'Anglia', role: 'fiatal kerettag', note: 'A fiatal kerethez tartozó védő, aki a felnőtt futball tempóját tanulja.' },
+      { name: 'Martin Ødegaard', initials: 'MØ', pos: 'kozeppalya', label: 'Középpályás', nation: 'Norvégia', role: 'kapitány · kreator', note: 'Kapitányként a ritmust, a félterületeket és a támadások utolsó passzát kapcsolja össze.' },
+      { name: 'Declan Rice', initials: 'DR', pos: 'kozeppalya', label: 'Középpályás', nation: 'Anglia', role: 'motor', note: 'Labdaszerzésben és labdával is nagy területet fed le; a csapat motorja.' },
+      { name: 'Mikel Merino', initials: 'MM', pos: 'kozeppalya', label: 'Középpályás', nation: 'Spanyolország', role: 'erő és ütem', note: 'Fizikális, intelligens középpályás, aki a második labdáknál és a tizenhatos környékén erős.' },
+      { name: 'Martin Zubimendi', initials: 'MZ', pos: 'kozeppalya', label: 'Középpályás', nation: 'Spanyolország', role: 'irányító hatos', note: 'A középpálya mélyéről ad biztonságot és tiszta passzkapcsolatokat.' },
+      { name: 'Bruno Guimarães', initials: 'BG', pos: 'kozeppalya', label: 'Középpályás', nation: 'Brazília', role: 'intenzitás', note: 'Intenzív, technikás középpályás, aki a párharcokat és a kreativitást egyesíti.' },
+      { name: 'Ethan Nwaneri', initials: 'EN', pos: 'kozeppalya', label: 'Középpályás', nation: 'Anglia', role: 'saját nevelés', note: 'Az akadémia egyik legizgalmasabb kreatív játékosa, aki a felnőtt keretben építi a saját hangját.' },
+      { name: 'Bukayo Saka', initials: 'BS', pos: 'tamado', label: 'Támadó', nation: 'Anglia', role: 'jobb oldal · saját nevelés', note: 'A klub egyik arcává vált: saját nevelésű, kreatív szélső, aki gólban és előkészítésben is meghatározó.' },
+      { name: 'Kai Havertz', initials: 'KH', pos: 'tamado', label: 'Támadó', nation: 'Németország', role: 'összekötő', note: 'A támadósor és a középpálya között dolgozik; intelligens mozgással nyit területet.' },
+      { name: 'Viktor Gyökeres', initials: 'VG', pos: 'tamado', label: 'Támadó', nation: 'Svédország', role: 'középcsatár', note: 'Erőteljes, közvetlen csatár, akinek a mélységi indulás és a befejezés a fő fegyvere.' },
+      { name: 'Noni Madueke', initials: 'NM', pos: 'tamado', label: 'Támadó', nation: 'Anglia', role: 'szélső', note: 'Egy az egy elleni játékával és gyors irányváltásaival ad szélességet a támadásnak.' },
+      { name: 'Eberechi Eze', initials: 'EE', pos: 'tamado', label: 'Támadó', nation: 'Anglia', role: 'kreatív támadó', note: 'Kreatív, cselező játékos, aki a szűk területeken is képes megbontani a védelmet.' },
+      { name: 'Christos Tzolis', initials: 'CT', pos: 'tamado', label: 'Támadó', nation: 'Görögország', role: 'szélső', note: 'Fiatal, lendületes támadó, aki a széleken és a kapu felé vezető indulásokban erős.' }
+    ];
+
+    const grid = document.getElementById('squadGrid');
+    const noResults = document.getElementById('noResults');
+    let activeFilter = 'all';
+    let query = '';
+
+    function renderSquad() {
+      const visible = squad.filter(player => {
+        const matchesFilter = activeFilter === 'all' || player.pos === activeFilter;
+        const haystack = `${player.name} ${player.nation} ${player.role} ${player.label}`.toLowerCase();
+        return matchesFilter && haystack.includes(query.toLowerCase());
+      });
+      grid.innerHTML = visible.map(player => `
+        <article class="player-card" data-player="${player.name}">
+          <div class="player-top"><span class="player-badge">${player.label}</span><span class="player-initials" aria-hidden="true">${player.initials}</span></div>
+          <div class="player-meta"><span class="position">${player.role}</span><h3>${player.name}</h3><p>${player.nation}</p></div>
+          <button class="player-action" data-open-player="${player.name}" aria-label="${player.name} részletei">Profil megnyitása <span>↗</span></button>
+        </article>`).join('');
+      noResults.classList.toggle('visible', visible.length === 0);
+      grid.querySelectorAll('[data-open-player]').forEach(button => button.addEventListener('click', () => openPlayer(button.dataset.openPlayer)));
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(button => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll('.filter-btn').forEach(item => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
+      renderSquad();
+    }));
+    document.getElementById('playerSearch').addEventListener('input', event => { query = event.target.value.trim(); renderSquad(); });
+
+    const modal = document.getElementById('playerModal');
+    function openPlayer(name) {
+      const player = squad.find(item => item.name === name);
+      if (!player) return;
+      document.getElementById('modalName').textContent = player.name;
+      document.getElementById('modalRole').textContent = `${player.label} · ${player.role}`;
+      document.getElementById('modalCopy').textContent = player.note;
+      document.getElementById('modalRoleFact').textContent = player.role;
+      document.getElementById('modalNation').textContent = player.nation;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('closeModal').focus();
+    }
+    function closePlayer() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+    document.getElementById('closeModal').addEventListener('click', closePlayer);
+    modal.addEventListener('click', event => { if (event.target === modal) closePlayer(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closePlayer(); });
+
+    document.getElementById('printPage').addEventListener('click', () => window.print());
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav = document.getElementById('siteNav');
+    menuToggle.addEventListener('click', () => { const open = siteNav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', String(open)); });
+    siteNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { siteNav.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); }));
+
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => { const max = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.width = `${Math.min(100, (window.scrollY / max) * 100)}%`; }, { passive: true });
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav a')];
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)); }), { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(section => observer.observe(section));
+
+    renderSquad();
+  </script>
+</body>
+</html>
